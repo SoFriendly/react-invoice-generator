@@ -21,7 +21,6 @@ Font.register({
     { src: 'https://fonts.gstatic.com/s/nunito/v12/XRXW3I6Li01BKofA6sKUYevN.ttf', fontWeight: 600 },
   ],
 })
-
 interface Props {
   data?: Invoice
   pdfMode?: boolean
@@ -132,26 +131,20 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
           <View className="w-50" pdfMode={pdfMode}>
             <EditableInput
               className="fs-20 bold"
-              placeholder="Your Company"
-              value={invoice.companyName}
+              placeholder="Company Name"
+              value="SoFriendly LLC"
               onChange={(value) => handleChange('companyName', value)}
               pdfMode={pdfMode}
             />
             <EditableInput
-              placeholder="Your Name"
-              value={invoice.name}
-              onChange={(value) => handleChange('name', value)}
-              pdfMode={pdfMode}
-            />
-            <EditableInput
               placeholder="Company's Address"
-              value={invoice.companyAddress}
+              value="115 N Stewart Ave Suite 1"
               onChange={(value) => handleChange('companyAddress', value)}
               pdfMode={pdfMode}
             />
             <EditableInput
               placeholder="City, State Zip"
-              value={invoice.companyAddress2}
+              value="Kissimmee, FL 34741"
               onChange={(value) => handleChange('companyAddress2', value)}
               pdfMode={pdfMode}
             />
@@ -182,13 +175,13 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               pdfMode={pdfMode}
             />
             <EditableInput
-              placeholder="Your Client's Name"
+              placeholder="Your Company Name"
               value={invoice.clientName}
               onChange={(value) => handleChange('clientName', value)}
               pdfMode={pdfMode}
             />
             <EditableInput
-              placeholder="Client's Address"
+              placeholder="Your Address"
               value={invoice.clientAddress}
               onChange={(value) => handleChange('clientAddress', value)}
               pdfMode={pdfMode}
@@ -218,7 +211,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               </View>
               <View className="w-60" pdfMode={pdfMode}>
                 <EditableInput
-                  placeholder="INV-12"
+                  placeholder="INV-123"
                   value={invoice.invoiceTitle}
                   onChange={(value) => handleChange('invoiceTitle', value)}
                   pdfMode={pdfMode}
@@ -248,7 +241,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                 />
               </View>
             </View>
-            <View className="flex mb-5" pdfMode={pdfMode}>
+            {/* <View className="flex mb-5" pdfMode={pdfMode}>
               <View className="w-40" pdfMode={pdfMode}>
                 <EditableInput
                   className="bold"
@@ -270,7 +263,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-            </View>
+            </View> */}
           </View>
         </View>
 
@@ -383,7 +376,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                 </Text>
               </View>
             </View>
-            <View className="flex" pdfMode={pdfMode}>
+            {/* <View className="flex" pdfMode={pdfMode}>
               <View className="w-50 p-5" pdfMode={pdfMode}>
                 <EditableInput
                   value={invoice.taxLabel}
@@ -396,7 +389,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                   {saleTax?.toFixed(2)}
                 </Text>
               </View>
-            </View>
+            </View> */}
             <View className="flex bg-gray p-5" pdfMode={pdfMode}>
               <View className="w-50 p-5" pdfMode={pdfMode}>
                 <EditableInput
@@ -433,27 +426,14 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
           />
           <EditableTextarea
             className="w-100"
+            placeholder="Add any notes here..."
             rows={2}
             value={invoice.notes}
             onChange={(value) => handleChange('notes', value)}
             pdfMode={pdfMode}
           />
         </View>
-        <View className="mt-20" pdfMode={pdfMode}>
-          <EditableInput
-            className="bold w-100"
-            value={invoice.termLabel}
-            onChange={(value) => handleChange('termLabel', value)}
-            pdfMode={pdfMode}
-          />
-          <EditableTextarea
-            className="w-100"
-            rows={2}
-            value={invoice.term}
-            onChange={(value) => handleChange('term', value)}
-            pdfMode={pdfMode}
-          />
-        </View>
+   
       </Page>
     </Document>
   )
